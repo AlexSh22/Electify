@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Election Match 2026 · התאמה בבחירות</title>
+  <meta name="description" content="Answer 10 questions and see which Israeli party is closest to you. Unofficial, neutral, open source.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">✓</span><span data-i18n="brand"></span></div>
+    <button id="lang" class="lang" type="button" aria-label="Switch language">English</button>
+  </header>
+
+  <main id="app">
+    <!-- Intro -->
+    <section id="intro" class="screen active">
+      <div class="hero">
+        <p class="eyebrow" id="electionLabel"></p>
+        <h1 data-i18n="title"></h1>
+        <p class="lead" data-i18n="lead"></p>
+        <button id="start" class="btn primary big" type="button" data-i18n="start"></button>
+        <p class="fine" data-i18n="disclaimer"></p>
+      </div>
+      <div class="orbit" aria-hidden="true"><div></div><div></div><div></div></div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="screen">
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="qmeta"><span id="qnum"></span><span id="qtopic" class="chip"></span></div>
+      <h2 id="qtext" class="qtext"></h2>
+      <div id="scale" class="scale" role="radiogroup"></div>
+      <div class="qactions">
+        <button id="back" class="btn ghost" type="button" data-i18n="back"></button>
+        <label class="important"><input type="checkbox" id="important"><span data-i18n="important"></span></label>
+        <button id="skip" class="btn ghost" type="button" data-i18n="skip"></button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="screen">
+      <div class="winner card">
+        <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle id="ringFg" cx="60" cy="60" r="52" class="ring-fg"/></svg><span id="ringPct"></span></div>
+        <div>
+          <p class="eyebrow" data-i18n="closest"></p>
+          <h2 id="winnerName"></h2>
+          <p id="winnerLeader" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3 data-i18n="ranking"></h3>
+          <p class="muted small" data-i18n="rankingHint"></p>
+          <ol id="bars" class="bars"></ol>
+        </div>
+        <div class="card">
+          <h3 data-i18n="map"></h3>
+          <p class="muted small" data-i18n="mapHint"></p>
+          <svg id="map" class="map" viewBox="0 0 400 400" role="img"></svg>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span data-i18n="compare"></span> <span id="compareName" class="accent"></span></h3>
+        <div class="compare">
+          <svg id="radar" class="radar" viewBox="-60 0 560 440" role="img"></svg>
+          <ul id="breakdown" class="breakdown"></ul>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="share" class="btn primary" type="button" data-i18n="share"></button>
+        <button id="restart" class="btn ghost" type="button" data-i18n="restart"></button>
+      </div>
+      <p class="fine" data-i18n="disclaimer"></p>
+      <p class="fine"><a href="https://github.com/AlexSh22/israel-election-match/blob/main/SOURCES.md" data-i18n="sources"></a></p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
