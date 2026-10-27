@@ -28,6 +28,8 @@
       copied: "Link copied",
       shareImg: "Share to Instagram",
       shareFb: "Share on Facebook",
+      shareWa: "Share on WhatsApp",
+      waText: (pct, party) => `I got a ${pct}% match with ${party} on Electify 🗳️ Which party is closest to you?`,
       saved: "Image saved. Post it to your Instagram story or feed.",
       cardTitle: "My closest party",
       cardCta: "Which party is closest to you?",
@@ -59,6 +61,8 @@
       copied: "הקישור הועתק",
       shareImg: "שיתוף באינסטגרם",
       shareFb: "שיתוף בפייסבוק",
+      shareWa: "שיתוף בוואטסאפ",
+      waText: (pct, party) => `יצא לי ${pct}% התאמה עם ${party} ב-Electify 🗳️ איזו מפלגה הכי קרובה אליך?`,
       saved: "התמונה נשמרה. אפשר להעלות אותה לסטורי או לפיד באינסטגרם.",
       cardTitle: "המפלגה הכי קרובה אליי",
       cardCta: "איזו מפלגה הכי קרובה אליך?",
@@ -447,6 +451,11 @@
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     toast(t("saved"));
+  };
+  $("shareWa").onclick = () => {
+    const top = rank()[0];
+    const msg = t("waText")(top.pct, L(top.p.name)) + "\n" + location.href;
+    window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank", "noopener");
   };
   $("shareFb").onclick = () => {
     const u = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(location.href);
