@@ -9,6 +9,9 @@
 // inaccurate or out of date. Order of `positions` matches the order of `questions`.
 
 window.ELECTION_DATA = {
+  // Anonymous visit counting with GoatCounter (no cookies, no personal data).
+  // Put your GoatCounter site code here (the "xyz" in xyz.goatcounter.com); leave "" to turn it off.
+  analytics: { goatcounter: "" },
   election: {
     en: "Knesset election · 27 October 2026",
     he: "הבחירות לכנסת · 27 באוקטובר 2026",

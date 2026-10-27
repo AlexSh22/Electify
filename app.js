@@ -25,6 +25,7 @@
       share: "Copy link to my results",
       restart: "Start over",
       sources: "Sources and methodology",
+      privacy: "We count anonymous visits and completed quizzes with GoatCounter. No cookies, no personal data, and your answers never leave your device.",
       copied: "Link copied",
       shareImg: "Share to Instagram",
       shareFb: "Share on Facebook",
@@ -58,6 +59,7 @@
       share: "העתקת קישור לתוצאות",
       restart: "להתחיל מחדש",
       sources: "מקורות ומתודולוגיה",
+      privacy: "אנחנו סופרים כניסות ושאלונים שהושלמו באופן אנונימי עם GoatCounter. בלי עוגיות, בלי מידע אישי, והתשובות שלכם לא יוצאות מהמכשיר.",
       copied: "הקישור הועתק",
       shareImg: "שיתוף באינסטגרם",
       shareFb: "שיתוף בפייסבוק",
@@ -147,6 +149,7 @@
     $("progressBar").style.width = "100%";
     selected = null;
     writeHash();
+    track("quiz-complete", "Quiz completed");
     show("results");
     renderResults(true);
   }
@@ -465,6 +468,21 @@
     if (!$("quiz").classList.contains("active")) return;
     if (e.key >= "1" && e.key <= "5") answer(Number(e.key) - 3);
   });
+
+  // ---------- Anonymous analytics (GoatCounter) ----------
+  // GoatCounter ignores the URL hash, so the #r= answers are never sent.
+  const GC = (D.analytics && D.analytics.goatcounter) || "";
+  function track(path, title) {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title, event: true });
+  }
+  if (GC) {
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://gc.zgo.at/count.js";
+    s.dataset.goatcounter = `https://${GC}.goatcounter.com/count`;
+    document.body.appendChild(s);
+    $("privacy").hidden = false;
+  }
 
   applyLang();
   if (readHash()) { show("results"); renderResults(true); }
