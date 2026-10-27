@@ -26,6 +26,11 @@
       restart: "Start over",
       sources: "Sources and methodology",
       copied: "Link copied",
+      shareImg: "Share image (Instagram)",
+      shareFb: "Share on Facebook",
+      saved: "Image saved. Post it to your Instagram story or feed.",
+      cardTitle: "My closest party",
+      cardCta: "Which party is closest to you?",
       agree: "Agree", partial: "Partly", disagree: "Disagree", na: "No clear position",
       you: "You",
       based: (n) => `${n}/10 issues`,
@@ -52,6 +57,11 @@
       restart: "להתחיל מחדש",
       sources: "מקורות ומתודולוגיה",
       copied: "הקישור הועתק",
+      shareImg: "שיתוף תמונה (אינסטגרם)",
+      shareFb: "שיתוף בפייסבוק",
+      saved: "התמונה נשמרה. אפשר להעלות אותה לסטורי או לפיד באינסטגרם.",
+      cardTitle: "המפלגה הכי קרובה אליי",
+      cardCta: "איזו מפלגה הכי קרובה אליך?",
       agree: "מסכימים", partial: "חלקית", disagree: "לא מסכימים", na: "אין עמדה ברורה",
       you: "אתם",
       based: (n) => `${n}/10 נושאים`,
@@ -62,7 +72,7 @@
   const SCALE_COLORS = ["#ff6b7a", "#ff9e8a", "#9aa6c0", "#7fd3a8", "#3ccf91"];
 
   let lang = "he";
-  try { lang = localStorage.getItem("lang") || (navigator.language.startsWith("he") ? "he" : "en"); } catch (_) {}
+  try { lang = localStorage.getItem("lang") || "he"; } catch (_) {}
   let answers = new Array(Q.length).fill(undefined); // -2..2, null = skipped
   let important = new Array(Q.length).fill(false);
   let idx = 0;
@@ -164,8 +174,12 @@
   }
 
   // ---------- Results ----------
+  function rank() {
+    return P.map((p) => ({ p, ...score(p) })).sort((a, b) => b.pct - a.pct || b.n - a.n);
+  }
+
   function renderResults(animate) {
-    const ranked = P.map((p) => ({ p, ...score(p) })).sort((a, b) => b.pct - a.pct || b.n - a.n);
+    const ranked = rank();
     if (!selected) selected = ranked[0].p.id;
     const top = ranked[0];
 
@@ -318,6 +332,81 @@
     return true;
   }
 
+  // ---------- Share image (1080x1920 story format) ----------
+  async function buildImage() {
+    await document.fonts.ready;
+    const W = 1080, H = 1920;
+    const cv = document.createElement("canvas");
+    cv.width = W; cv.height = H;
+    const ctx = cv.getContext("2d");
+    const rtl = lang === "he";
+    const font = (w, px) => `${w} ${px}px Assistant, system-ui, sans-serif`;
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, "#0b1220"); bg.addColorStop(1, "#1d1a4a");
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    const glow = ctx.createRadialGradient(W * 0.85, 120, 0, W * 0.85, 120, 700);
+    glow.addColorStop(0, "rgba(90,168,255,0.35)"); glow.addColorStop(1, "rgba(90,168,255,0)");
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+
+    ctx.direction = rtl ? "rtl" : "ltr";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#9aa6c0"; ctx.font = font(800, 34);
+    ctx.fillText("ELECTIFY · " + L(D.election), W / 2, 150);
+    ctx.fillStyle = "#eef2fb"; ctx.font = font(600, 52);
+    ctx.fillText(t("cardTitle"), W / 2, 250);
+
+    const ranked = rank();
+    const top = ranked[0];
+    // Ring
+    const cx = W / 2, cy = 520, r = 180;
+    ctx.lineWidth = 36; ctx.lineCap = "round";
+    ctx.strokeStyle = "rgba(255,255,255,0.1)";
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = top.p.color;
+    ctx.beginPath(); ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + (Math.PI * 2 * top.pct) / 100); ctx.stroke();
+    ctx.fillStyle = "#fff"; ctx.font = font(800, 120);
+    ctx.fillText(`${top.pct}%`, cx, cy + 42);
+    ctx.font = font(800, 92);
+    ctx.fillText(L(top.p.name), W / 2, 840);
+    ctx.fillStyle = "#9aa6c0"; ctx.font = font(400, 44);
+    ctx.fillText(L(top.p.leader), W / 2, 905);
+
+    // Top 6 bars
+    const x0 = 110, x1 = W - 110, bw = x1 - x0;
+    ranked.slice(0, 6).forEach(({ p, pct }, i) => {
+      const y = 1030 + i * 120;
+      ctx.textAlign = rtl ? "right" : "left";
+      ctx.fillStyle = "#eef2fb"; ctx.font = font(600, 42);
+      ctx.fillText(L(p.name), rtl ? x1 : x0, y);
+      ctx.textAlign = rtl ? "left" : "right";
+      ctx.font = font(800, 42);
+      ctx.fillText(`${pct}%`, rtl ? x0 : x1, y);
+      ctx.fillStyle = "rgba(255,255,255,0.1)";
+      roundRect(ctx, x0, y + 22, bw, 22, 11); ctx.fill();
+      ctx.fillStyle = p.color;
+      const fw = Math.max(22, (bw * pct) / 100);
+      roundRect(ctx, rtl ? x1 - fw : x0, y + 22, fw, 22, 11); ctx.fill();
+    });
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#eef2fb"; ctx.font = font(800, 50);
+    ctx.fillText(t("cardCta"), W / 2, 1790);
+    ctx.fillStyle = "#5aa8ff"; ctx.font = font(600, 42);
+    ctx.direction = "ltr";
+    ctx.fillText("alexsh22.github.io/Electify", W / 2, 1855);
+    return new Promise((res) => cv.toBlob(res, "image/png"));
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
   function toast(msg) {
     const n = $("toast");
     n.textContent = msg;
@@ -344,6 +433,24 @@
   $("share").onclick = async () => {
     try { await navigator.clipboard.writeText(location.href); toast(t("copied")); }
     catch (_) { prompt("", location.href); }
+  };
+  $("shareImg").onclick = async () => {
+    const blob = await buildImage();
+    const file = new File([blob], "electify-result.png", { type: "image/png" });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file], text: t("cardCta") + " " + location.href }); return; }
+      catch (e) { if (e.name === "AbortError") return; }
+    }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "electify-result.png";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    toast(t("saved"));
+  };
+  $("shareFb").onclick = () => {
+    const u = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(location.href);
+    window.open(u, "_blank", "noopener,width=640,height=560");
   };
   document.addEventListener("keydown", (e) => {
     if (!$("quiz").classList.contains("active")) return;
