@@ -1,4 +1,4 @@
-# Election Match 2026 · התאמה בבחירות
+# Electify · Election Match 2026 · התאמה בבחירות
 
 A small, static voting-advice app for Israel's 27 October 2026 Knesset election.
 Answer 10 questions (Hebrew or English) and see which of 13 parties is closest to you, with:
@@ -18,4 +18,4 @@ All questions, translations and party positions live in [`data.js`](data.js). No
 Open `index.html` in a browser, or `python3 -m http.server` and visit http://localhost:8000.
 
 ## Deploying
-Hosted on GitHub Pages from the `main` branch root.
+Hosted on GitHub Pages from the `main` branch root: https://alexsh22.github.io/Electify/
