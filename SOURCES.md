@@ -29,8 +29,9 @@ Bubble sizes use the MEF poll-of-polls average (fieldwork 7–21 Oct 2026). Amch
 
 ## Election results (updated 28 Oct 2026)
 Seat counts are in [`results.js`](results.js). The official results site (https://votes26.bechirot.gov.il/) could not be read automatically, so the numbers come from news reports of the Central Elections Committee count:
-- ynetnews, *Netanyahu bloc at 53 seats, Eisenkot bloc at 48 as nearly all votes counted* — 85.6% of votes counted, updated 28 Oct 2026 15:13 Israel time: https://www.ynetnews.com/article/hjnatbkaml
-- Cross-checked with the Jerusalem Post (28 Oct 2026, same bloc totals; it gives Joint List 12 / Ra'am 7 instead of 13 / 6): https://www.jpost.com/israel-election-2026/article-913122
+- Walla, *88% of votes counted, double envelopes count begins at 1:00* — 88% (5,047,241 votes), 28 Oct 2026 21:08 Israel time: https://www.walla.co.il/news/israel/383959283
+- Jerusalem Post, same seat figures at ~88% counted (updated 28 Oct 2026 22:35): https://www.jpost.com/israel-election-2026/article-913164
+- Earlier: ynetnews at 85.6% counted (15:13), which had Joint List 13 / Ra'am 6: https://www.ynetnews.com/article/hjnatbkaml
 
 These are partial results before double envelopes (soldiers and absentee voters) are counted; official results are due 4 November 2026. Update `results.js` → `seats` and `status` as counting finishes.
 
