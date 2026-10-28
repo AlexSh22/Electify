@@ -8,17 +8,17 @@
 
 window.ELECTION_RESULTS = {
   status: {
-    counted: 88,
-    asOf: "2026-10-28T21:08:00+02:00",
+    counted: 89.8,
+    asOf: "2026-10-28T22:44:00+02:00",
     final: false,
     note: {
-      he: "88% מהקולות נספרו (5,047,241 קולות), לפני המעטפות הכפולות (חיילים ומצביעים מחוץ לקלפי). ספירתן מתחילה בלילה ותסתיים מחר בערב. התוצאות הרשמיות ייקבעו ב-4 בנובמבר.",
-      en: "88% of votes counted (5,047,241 votes), before double envelopes (soldiers and absentee voters). Their count starts overnight and ends tomorrow evening. Official results are due 4 November.",
+      he: "כ-90% מהקולות נספרו, לפני המעטפות הכפולות (חיילים ומצביעים מחוץ לקלפי). ספירתן מתחילה בלילה ותסתיים מחר בערב. התוצאות הרשמיות ייקבעו ב-4 בנובמבר.",
+      en: "About 90% of votes counted, before double envelopes (soldiers and absentee voters). Their count starts overnight and ends tomorrow evening. Official results are due 4 November.",
     },
     source: {
-      he: "וואלה לפי נתוני ועדת הבחירות המרכזית",
-      en: "Walla, citing Central Elections Committee data",
-      url: "https://www.walla.co.il/news/israel/383959283",
+      he: "כיכר השבת לפי נתוני ועדת הבחירות המרכזית",
+      en: "Kikar HaShabbat, citing Central Elections Committee data",
+      url: "https://www.kikar.co.il/scoop-news/89801",
     },
     official: "https://votes26.bechirot.gov.il/",
   },
