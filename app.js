@@ -6,7 +6,22 @@
 
   const T = {
     en: {
-      brand: "Election Match 2026",
+      brand: "Electify 2026",
+      tabResults: "Results",
+      tabCoalition: "Build a coalition",
+      tabQuiz: "Quiz",
+      resEyebrow: "Knesset election · 27 October 2026",
+      resTitle: "The election results",
+      resSeats: "Seats by party",
+      ctaCoalition: "Build a coalition →",
+      ctaQuiz: "Take the quiz",
+      coalEyebrow: "The seats game",
+      coalTitle: "Can you reach 61?",
+      coalLead: "Tap parties to add them to a coalition. We'll warn you when parties in your coalition have said they won't sit together.",
+      coalWarnings: "Who won't sit with whom",
+      coalLegend: "Red: a public \"will not sit\" statement or hard condition. Amber: no explicit vow, but unlikely. Each item links to its source.",
+      coalReset: "Clear",
+      coalDisclaimer: "Unofficial summary of public statements from the campaign and after the vote. Positions can change during negotiations. Seat counts are partial until the official results.",
       title: "Which party is closest to you?",
       lead: "Answer 10 questions on the issues shaping Israel's 2026 election. We'll compare your answers with the published positions of 13 parties.",
       start: "Start",
@@ -40,7 +55,22 @@
       party: "Party",
     },
     he: {
-      brand: "התאמה בבחירות 2026",
+      brand: "Electify 2026",
+      tabResults: "תוצאות",
+      tabCoalition: "בונים קואליציה",
+      tabQuiz: "מי הכי מתאים לי?",
+      resEyebrow: "הבחירות לכנסת · 27 באוקטובר 2026",
+      resTitle: "תוצאות הבחירות",
+      resSeats: "מנדטים לפי מפלגה",
+      ctaCoalition: "← בונים קואליציה",
+      ctaQuiz: "לשאלון",
+      coalEyebrow: "משחק הכיסאות",
+      coalTitle: "תצליחו להגיע ל-61?",
+      coalLead: "לחצו על מפלגות כדי לצרף אותן לקואליציה. נתריע כשמפלגות בקואליציה שלכם הצהירו שלא ישבו יחד.",
+      coalWarnings: "מי לא יושב עם מי",
+      coalLegend: "אדום: הצהרה פומבית \"לא נשב\" או תנאי מפורש. כתום: אין התחייבות מפורשת, אבל לא סביר. כל פריט מקושר למקור.",
+      coalReset: "ניקוי",
+      coalDisclaimer: "סיכום לא רשמי של הצהרות פומביות מהקמפיין ומאחרי הבחירות. עמדות יכולות להשתנות במשא ומתן. מספרי המנדטים חלקיים עד לפרסום התוצאות הרשמיות.",
       title: "איזו מפלגה הכי קרובה אליך?",
       lead: "ענו על 10 שאלות בנושאים שמעצבים את בחירות 2026. נשווה את התשובות שלכם לעמדות המפורסמות של 13 מפלגות.",
       start: "מתחילים",
@@ -95,8 +125,10 @@
     return n;
   }
 
+  const TAB_OF = { election: "election", coalition: "coalition", intro: "intro", quiz: "intro", results: "intro" };
   function show(id) {
     document.querySelectorAll(".screen").forEach((s) => s.classList.toggle("active", s.id === id));
+    document.querySelectorAll(".tab").forEach((b) => b.classList.toggle("active", b.dataset.tab === TAB_OF[id]));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -108,6 +140,7 @@
     $("electionLabel").textContent = L(D.election);
     if ($("quiz").classList.contains("active")) renderQuestion();
     if ($("results").classList.contains("active")) renderResults(false);
+    document.dispatchEvent(new Event("langchange"));
   }
 
   // ---------- Quiz ----------
@@ -485,5 +518,16 @@
   }
 
   applyLang();
+  document.querySelectorAll("[data-tab],[data-goto]").forEach((b) => {
+    b.addEventListener("click", () => {
+      const id = b.dataset.tab || b.dataset.goto;
+      history.replaceState(null, "", location.pathname);
+      show(id);
+      if (id === "coalition") window.Coalition.writeHash();
+    });
+  });
+
   if (readHash()) { show("results"); renderResults(true); }
+  else if (window.Coalition.readHash()) { show("coalition"); window.Coalition.renderAll(); }
+  else show("election");
 })();

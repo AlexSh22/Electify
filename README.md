@@ -1,6 +1,6 @@
 # Electify · Election Match 2026 · התאמה בבחירות
 
-A small, static voting-advice app for Israel's 27 October 2026 Knesset election.
+A small, static app for Israel's 27 October 2026 Knesset election: live results, a coalition "seats game" with warnings about who won't sit with whom, and a voting-advice quiz.
 Answer 10 questions (Hebrew or English) and see which of 13 parties is closest to you, with:
 
 - a match ring for your top party,
@@ -12,7 +12,7 @@ Answer 10 questions (Hebrew or English) and see which of 13 parties is closest t
 **Unofficial and neutral. Positions are summaries and may be inaccurate. See [SOURCES.md](SOURCES.md).**
 
 ## Editing
-All questions, translations and party positions live in [`data.js`](data.js). No build step.
+Quiz questions and party positions live in [`data.js`](data.js); seat counts and coalition vetoes in [`results.js`](results.js). No build step.
 
 ## Running locally
 Open `index.html` in a browser, or `python3 -m http.server` and visit http://localhost:8000.

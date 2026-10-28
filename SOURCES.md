@@ -26,3 +26,32 @@ Bubble sizes use the MEF poll-of-polls average (fieldwork 7–21 Oct 2026). Amch
 - Wikipedia, *2026 Israeli legislative election* (lists, leaders, alliances, election date): https://en.wikipedia.org/wiki/2026_Israeli_legislative_election
 - Middle East Forum, *Israel Election 2026 Poll of Polls* (seat averages, updated 23 Oct 2026): https://israelvote.meforum.org/
 - JNS, *Israel's political parties explained* series (Yashar, Together): https://jns.org/feature/israels-political-parties-explained-yashar · https://www.jns.org/feature/israels-political-parties-explained-together
+
+## Election results (updated 28 Oct 2026)
+Seat counts are in [`results.js`](results.js). The official results site (https://votes26.bechirot.gov.il/) could not be read automatically, so the numbers come from news reports of the Central Elections Committee count:
+- ynetnews, *Netanyahu bloc at 53 seats, Eisenkot bloc at 48 as nearly all votes counted* — 85.6% of votes counted, updated 28 Oct 2026 15:13 Israel time: https://www.ynetnews.com/article/hjnatbkaml
+- Cross-checked with the Jerusalem Post (28 Oct 2026, same bloc totals; it gives Joint List 12 / Ra'am 7 instead of 13 / 6): https://www.jpost.com/israel-election-2026/article-913122
+
+These are partial results before double envelopes (soldiers and absentee voters) are counted; official results are due 4 November 2026. Update `results.js` → `seats` and `status` as counting finishes.
+
+## Coalition builder: who won't sit with whom
+Each "veto" in `results.js` is marked **firm** (a public "will not sit" statement or hard coalition condition) or **unlikely** (no explicit vow, but long-standing positions make it improbable). This is an unofficial summary; positions can change during negotiations.
+
+| Statement | Strength | Source |
+|---|---|---|
+| Yisrael Beytenu (Liberman) won't sit with Shas / UTJ | firm | Jerusalem Post, 25 Aug 2026 — https://jpost.com/israel-election-2026/article-906447 |
+| Yisrael Beytenu won't sit with or rely on Arab parties | firm | Jerusalem Post, 25 Aug 2026 (same) |
+| Yisrael Beytenu won't serve under Netanyahu (Likud without him possible) | firm | Jerusalem Post, 25 Aug 2026 (same) |
+| Yashar! (Eisenkot) won't serve under Netanyahu, even in rotation | firm | ynet, 21 Oct 2026 — https://www.ynet.co.il/news/elections2026/article/hkj8dy8nfe |
+| Yashar! says Ra'am won't be in his government; no Arab party meets his conditions | firm | N12 *Meet the Press*, 26 Sep 2026 — https://www.mako.co.il/news-israel-elections/2026_q4/Article-195ef5f365ad0a1026.htm |
+| Yashar!: no Haredi party currently meets his service conditions (open to Shas if it accepts them) | unlikely | N12, 26 Sep 2026 (same) |
+| Together (Bennett) won't join a Netanyahu-led government | firm | ynetnews, 17 Feb 2026 — https://www.ynetnews.com/article/hkr4bazo11x |
+| Together won't rely on Arab parties; rules out Ra'am | firm | ynet, 21 Oct 2026 (above) |
+| UTJ won't back a government that doesn't enshrine a draft exemption (clashes with draft-demanding parties) | firm | Times of Israel party guide, Oct 2026 — https://www.timesofisrael.com/everything-you-need-to-know-tois-guide-to-the-37-parties-that-israelis-can-finally-choose-from/ |
+| Shas opposes universal conscription; part of Netanyahu's bloc | unlikely | Times of Israel party guide (same) |
+| Likud (Netanyahu) won't form a government relying on Arab parties | firm | mako live blog, 28 Oct 2026 03:14 — https://www.mako.co.il/news-politics/2026_q4/liveblog-f5b5a09693081a1026.htm |
+| Otzma Yehudit and the Arab parties shun each other | unlikely | Times of Israel party guide (same) |
+| Religious Zionism won't sit with Ra'am | unlikely (2021 statement) | Israel Hayom, 25 Mar 2021 — https://www.israelhayom.com/2021/03/25/religious-zionist-party-says-wont-sit-in-coalition-with-raam/ |
+| Otzma / Religious Zionism vs. the change bloc ("Don't count on the left") | unlikely | Times of Israel, 19 Oct 2026 — https://www.timesofisrael.com/ben-gvir-says-netanyahu-pledged-to-exclude-him-from-next-government-as-election-nears/ |
+| Democrats (with the change bloc) won't sit with October 7 government parties | firm | ynet, 21 Oct 2026 (above) |
+| Joint List (Jabareen) aims to replace the Netanyahu–Ben Gvir–Smotrich government; offers outside support only | firm | ynetnews, 28 Oct 2026 — https://www.ynetnews.com/article/hjnatbkaml |
