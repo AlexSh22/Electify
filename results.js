@@ -9,22 +9,22 @@
 window.ELECTION_RESULTS = {
   status: {
     counted: 90.1,
-    asOf: "2026-10-29T00:59:00+02:00",
+    asOf: "2026-10-29T06:10:00+02:00",
     final: false,
     note: {
-      he: "כ-90% מהקולות נספרו, לפני המעטפות הכפולות (חיילים ומצביעים מחוץ לקלפי). ספירתן החלה ב-01:00 ותסתיים הערב. התוצאות הרשמיות ייקבעו ב-4 בנובמבר.",
-      en: "About 90% of votes counted, before double envelopes (soldiers and absentee voters). Their count began at 01:00 and should end this evening. Official results are due 4 November.",
+      he: "כ-91% מהקולות נספרו, לפני המעטפות הכפולות (חיילים ומצביעים מחוץ לקלפי). ספירתן החלה ב-01:00 ותסתיים הערב. התוצאות הרשמיות ייקבעו ב-4 בנובמבר.",
+      en: "About 91% of votes counted, before double envelopes (soldiers and absentee voters). Their count began at 01:00 and should end this evening. Official results are due 4 November.",
     },
     source: {
-      he: "זמן ישראל לפי נתוני ועדת הבחירות המרכזית",
-      en: "Zman Israel, citing Central Elections Committee data",
-      url: "https://www.zman.co.il/live/737512/",
+      he: "גלובס לפי נתוני ועדת הבחירות המרכזית",
+      en: "Globes, citing Central Elections Committee data",
+      url: "https://www.globes.co.il/news/article.aspx?did=1001561230",
     },
     official: "https://votes26.bechirot.gov.il/",
   },
   seats: {
-    likud: 26, yashar: 21, joint_list: 12, together: 12, democrats: 8,
-    yisrael_beytenu: 7, utj: 7, shas: 7, otzma: 7, rz_zehut: 6, raam: 7,
+    likud: 26, yashar: 21, joint_list: 11, together: 12, democrats: 8,
+    yisrael_beytenu: 7, utj: 7, shas: 7, otzma: 7, rz_zehut: 6, raam: 8,
     reservists: 0, amcha: 0,
   },
   // Party names that appear in the presets below.

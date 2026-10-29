@@ -29,6 +29,7 @@ Bubble sizes use the MEF poll-of-polls average (fieldwork 7–21 Oct 2026). Amch
 
 ## Election results (updated 28 Oct 2026)
 Seat counts are in [`results.js`](results.js). The official results site (https://votes26.bechirot.gov.il/) could not be read automatically, so the numbers come from news reports of the Central Elections Committee count:
+- Globes live blog — about 91% counted (excluding double envelopes) at 06:10 on 29 Oct 2026; Ra'am up to 8 seats at the Joint List's expense (Joint List 11 is inferred from that report; single source so far): https://www.globes.co.il/news/article.aspx?did=1001561230
 - Zman Israel live blog — 90.1% counted from 97.6% of polling stations as of 00:59 on 29 Oct 2026; double-envelope count began at 01:00; seats unchanged: https://www.zman.co.il/live/737512/
 - Kikar HaShabbat, *89.8% counted, no change in the seat map* — 28 Oct 2026 22:44 Israel time: https://www.kikar.co.il/scoop-news/89801
 - Walla, *88% of votes counted, double envelopes count begins at 1:00* — 88% (5,047,241 votes), 28 Oct 2026 21:08 Israel time: https://www.walla.co.il/news/israel/383959283
