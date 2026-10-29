@@ -29,6 +29,8 @@ Bubble sizes use the MEF poll-of-polls average (fieldwork 7–21 Oct 2026). Amch
 
 ## Election results (updated 28 Oct 2026)
 Seat counts are in [`results.js`](results.js). The official results site (https://votes26.bechirot.gov.il/) could not be read automatically, so the numbers come from news reports of the Central Elections Committee count:
+- Times of Israel live blog, 29 Oct 2026 17:02 — double-envelope count complete (392,234 ballots), Ra'am 8 / Joint List 11, blocs 53 / 48 / 19: https://www.timesofisrael.com/liveblog_entry/raam-gains-seat-at-expense-of-joint-list-as-vote-count-continues-no-changes-to-blocs/
+- Times of Israel live blog, 29 Oct 2026 15:23 — Likud gains a seat from Shas (Likud 27, Shas 6): https://www.timesofisrael.com/liveblog_entry/as-vote-count-continues-likud-gains-a-seat-at-expense-of-ally-shas-no-change-in-blocs/
 - Channel 13 News, 29 Oct 2026 07:25 — about 91% counted, Ra'am 8 / Joint List 11 confirmed, blocs unchanged at 53 / 48 / 19; double-envelope count ongoing until the evening: https://13tv.co.il/item/news/politics/politics/mo8fd-905428800/
 - Globes live blog — about 91% counted (excluding double envelopes) at 06:10 on 29 Oct 2026; Ra'am up to 8 seats at the Joint List's expense (Joint List 11 is inferred from that report; single source so far): https://www.globes.co.il/news/article.aspx?did=1001561230
 - Zman Israel live blog — 90.1% counted from 97.6% of polling stations as of 00:59 on 29 Oct 2026; double-envelope count began at 01:00; seats unchanged: https://www.zman.co.il/live/737512/

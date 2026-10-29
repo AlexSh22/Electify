@@ -8,23 +8,23 @@
 
 window.ELECTION_RESULTS = {
   status: {
-    counted: 90.1,
-    asOf: "2026-10-29T07:25:00+02:00",
-    final: false,
+    counted: 100,
+    asOf: "2026-10-29T16:57:00+02:00",
+    final: true,
     note: {
-      he: "כ-91% מהקולות נספרו, לפני המעטפות הכפולות (חיילים ומצביעים מחוץ לקלפי). ספירתן החלה ב-01:00 ותסתיים הערב. התוצאות הרשמיות ייקבעו ב-4 בנובמבר.",
-      en: "About 91% of votes counted, before double envelopes (soldiers and absentee voters). Their count began at 01:00 and should end this evening. Official results are due 4 November.",
+      he: "ספירת המעטפות הכפולות הושלמה (392,234 פתקים). התוצאות הן לפי הדיווחים על נתוני ועדת הבחירות המרכזית ועדיין לא אושרו רשמית. התוצאות הרשמיות ייקבעו ב-4 בנובמבר.",
+      en: "The double-envelope count is complete (392,234 ballots). Figures follow reports of the Central Elections Committee data and are not yet officially certified. Official results are due 4 November.",
     },
     source: {
-      he: "חדשות 13 לפי נתוני ועדת הבחירות המרכזית",
-      en: "Channel 13 News, citing Central Elections Committee data",
-      url: "https://13tv.co.il/item/news/politics/politics/mo8fd-905428800/",
+      he: "טיימס אוף ישראל לפי נתוני ועדת הבחירות המרכזית",
+      en: "Times of Israel, citing Central Elections Committee data",
+      url: "https://www.timesofisrael.com/liveblog_entry/raam-gains-seat-at-expense-of-joint-list-as-vote-count-continues-no-changes-to-blocs/",
     },
     official: "https://votes26.bechirot.gov.il/",
   },
   seats: {
-    likud: 26, yashar: 21, joint_list: 11, together: 12, democrats: 8,
-    yisrael_beytenu: 7, utj: 7, shas: 7, otzma: 7, rz_zehut: 6, raam: 8,
+    likud: 27, yashar: 21, joint_list: 11, together: 12, democrats: 8,
+    yisrael_beytenu: 7, utj: 7, shas: 6, otzma: 7, rz_zehut: 6, raam: 8,
     reservists: 0, amcha: 0,
   },
   // Party names that appear in the presets below.
