@@ -9,16 +9,16 @@
 window.ELECTION_RESULTS = {
   status: {
     counted: 90.1,
-    asOf: "2026-10-29T06:10:00+02:00",
+    asOf: "2026-10-29T07:25:00+02:00",
     final: false,
     note: {
       he: "כ-91% מהקולות נספרו, לפני המעטפות הכפולות (חיילים ומצביעים מחוץ לקלפי). ספירתן החלה ב-01:00 ותסתיים הערב. התוצאות הרשמיות ייקבעו ב-4 בנובמבר.",
       en: "About 91% of votes counted, before double envelopes (soldiers and absentee voters). Their count began at 01:00 and should end this evening. Official results are due 4 November.",
     },
     source: {
-      he: "גלובס לפי נתוני ועדת הבחירות המרכזית",
-      en: "Globes, citing Central Elections Committee data",
-      url: "https://www.globes.co.il/news/article.aspx?did=1001561230",
+      he: "חדשות 13 לפי נתוני ועדת הבחירות המרכזית",
+      en: "Channel 13 News, citing Central Elections Committee data",
+      url: "https://13tv.co.il/item/news/politics/politics/mo8fd-905428800/",
     },
     official: "https://votes26.bechirot.gov.il/",
   },
